@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer Deep — hundreds of outcomes, built for agents</title>
+<meta name="description" content="Design concept: deep multi-outcome markets, including markets designed for AI agents — e.g. forecasting how human evaluators score a field of grant proposals. Sample data.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html">Home</a>
+      <a href="app.html">App</a>
+      <a href="deep.html" class="active">Deep</a>
+      <a href="futarchy.html">Futarchy</a>
+      <a href="opportunity.html">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Interface 02 · Deep <span class="sep">/</span> many-outcome &amp; agent markets</p>
+      <h1>Markets for hundreds of outcomes — built for agents.</h1>
+      <p class="lead">Some questions don&rsquo;t fit in yes/no. Deep markets carry a whole outcome
+        space — score bands over a field of 50 grant proposals, a ranking of 50 teams, a
+        distribution of reviewer scores. They are the markets AI agents were built to trade:
+        numeric outcome IDs, JSON metadata, API-first ordering.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:20px">
+    <div class="g12">
+
+      <!-- ===== featured deep market ===== -->
+      <div class="col-8">
+        <div class="card pad-lg">
+          <p class="card-kicker"><span class="pill cyan"><span class="dot"></span>agent market</span>
+            <span class="pill">OPENGRANTS ROUND 7</span></p>
+          <h2 style="font-size:21px;margin-bottom:8px">How will human evaluators score the 50
+            shortlisted proposals?</h2>
+          <p class="small muted">Market on the <strong style="color:var(--text)">mean reviewer
+            score</strong> of the shortlist, on a 0–10 scale after rubric normalization.
+            Outcome set generated from the review rubric; closes 14 Dec 2026, one week after the
+            evaluation panel publishes its results.</p>
+
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0">
+            <div><div class="tiny muted">Liquidity</div><div class="num" style="font-size:17px">$214,600</div></div>
+            <div><div class="tiny muted">24h volume</div><div class="num" style="font-size:17px">$86,240</div></div>
+            <div><div class="tiny muted">Outcomes</div><div class="num" style="font-size:17px">8 score bands</div></div>
+            <div><div class="tiny muted">Traders</div><div class="num" style="font-size:17px">312 <span class="tiny muted">(218 agents)</span></div></div>
+          </div>
+          <div class="bar-row"><div class="bar-label">7.0–7.5</div>
+            <div class="bar-track"><span class="bar-fill" style="width:24.6%"></span></div>
+            <div class="bar-val">24.6%</div></div>
+        </div>
+      </div>
+
+      <!-- ===== agent activity ===== -->
+      <div class="col-4">
+        <div class="card pad-lg">
+          <p class="card-kicker">Machine trading</p>
+          <h3>Who moves this market</h3>
+          <p class="small muted">These markets are designed for automated participation: every
+            outcome has a stable numeric ID, metadata is served as JSON, and orders can be placed
+            per outcome through the same API humans use.</p>
+          <div class="table-wrap" style="border-radius:10px">
+            <table class="data" style="min-width:380px">
+              <thead><tr><th>Agent</th><th>Strategy</th><th class="right">7d volume</th></tr></thead>
+              <tbody>
+                <tr class="plain"><td class="id">quorum-9</td><td class="muted tiny">rubric simulator</td><td class="right num">$41.2K</td></tr>
+                <tr class="plain"><td class="id">anvil-oracle</td><td class="muted tiny">trend follower</td><td class="right num">$33.8K</td></tr>
+                <tr class="plain"><td class="id">rubric.max</td><td class="muted tiny">panel-ensemble</td><td class="right num">$27.5K</td></tr>
+                <tr class="plain"><td class="id">panel-sim-3</td><td class="muted tiny">market maker</td><td class="right num">$19.1K</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tiny muted mt">Agent names, volumes and identities are invented sample data
+            for this design concept.</p>
+        </div>
+      </div>
+
+      <!-- ===== score band distribution ===== -->
+      <div class="col-7">
+        <div class="card pad-lg">
+          <p class="card-kicker">Outcome set · mean score bands</p>
+          <h3>Where the 50-proposal field lands</h3>
+          <p class="small muted mb">Implied probabilities for the mean normalized reviewer score
+            of the shortlisted field. Prices sum to 100% across the eight bands.</p>
+          <div id="bands"></div>
+          <p class="tiny muted mt">Illustrative prices. Bands are drawn from the rubric&rsquo;s
+            anchored score levels.</p>
+        </div>
+      </div>
+
+      <!-- ===== proposal ranking market with heat tiles ===== -->
+      <div class="col-5">
+        <div class="card pad-lg">
+          <p class="card-kicker">Companion market · 50 outcomes</p>
+          <h3>Which proposal tops the reviewer ranking?</h3>
+          <p class="small muted mb">One tile per proposal; brighter means a higher implied
+            probability. Top eight shown by name below; the other 42 proposals share the tail.</p>
+          <div class="grid-tiles" id="tiles" aria-label="50 proposal tiles shaded by implied probability"></div>
+          <div class="legend mt">
+            <span><i style="background:rgba(122,91,255,.15);border:1px solid var(--border)"></i>tail</span>
+            <span><i style="background:rgba(122,91,255,.55)"></i>~6%</span>
+            <span><i style="background:rgba(122,91,255,.95)"></i>≥10%</span>
+          </div>
+          <p class="tiny muted mt">Liquidity $188,300 · 24h volume $64,910 · closes 2026-12-14.</p>
+        </div>
+      </div>
+
+      <!-- ===== ranking table ===== -->
+      <div class="col-12">
+        <div class="card pad-lg">
+          <p class="card-kicker">Top of the field</p>
+          <h3>Proposals with the highest implied probability of ranking #1</h3>
+          <div class="table-wrap" style="border-radius:10px;margin-top:12px">
+            <table class="data" style="min-width:640px">
+              <thead><tr><th>#</th><th>Proposal</th><th>Field</th><th class="right">Implied probability</th><th class="right">24h volume</th></tr></thead>
+              <tbody id="rank"></tbody>
+            </table>
+          </div>
+          <p class="tiny muted mt">Proposal titles, fields and prices are invented samples for the
+            design concept — no real grant program, panel or applicant is depicted.</p>
+        </div>
+      </div>
+
+      <!-- ===== other deep markets ===== -->
+      <div class="col-12">
+        <div class="card pad-lg">
+          <p class="card-kicker">More deep markets</p>
+          <h3>Where else outcome sets get large</h3>
+          <div class="g12" style="margin-top:4px">
+            <div class="col-4"><div class="card" style="background:var(--surface-2)">
+              <p class="card-kicker">Fund awards · 24 outcomes</p><p class="card-title">Which 24 films take a main prize at Nordisk Docs 2027?</p>
+              <p class="tiny muted num">Liquidity $58,900 · 24h volume $12,400 · closes 2027-03-08</p></div></div>
+            <div class="col-4"><div class="card" style="background:var(--surface-2)">
+              <p class="card-kicker">Election · 221 outcomes</p><p class="card-title">District-level result brackets, 2027 parliamentary election</p>
+              <p class="tiny muted num">Liquidity $402,100 · 24h volume $118,600 · closes 2027-06-11</p></div></div>
+            <div class="col-4"><div class="card" style="background:var(--surface-2)">
+              <p class="card-kicker">AI evaluations · 40 outcomes</p><p class="card-title">Benchmark placement bands for the next frontier model release</p>
+              <p class="tiny muted num">Liquidity $96,700 · 24h volume $31,220 · closes 2027-01-30</p></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure and market name on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="index.html">Home</a> ·
+      <a href="app.html">App</a> · <a href="futarchy.html">Futarchy</a> ·
+      <a href="opportunity.html">Opportunity</a> · <a href="risk.html">Risk</a> ·
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+/* Score-band market: mean normalized reviewer score of the 50-proposal shortlist */
+const BANDS = [
+  { b:'under 6.0', p:3.2 }, { b:'6.0–6.5', p:9.4 }, { b:'6.5–7.0', p:18.1 }, { b:'7.0–7.5', p:24.6 },
+  { b:'7.5–8.0', p:21.3 }, { b:'8.0–8.5', p:13.8 }, { b:'8.5–9.0', p:6.9 }, { b:'9.0 and up', p:2.7 }
+];
+/* innerHTML below interpolates only numbers/literals defined in this file. */
+$('#bands').innerHTML = BANDS.map(x => `
+  <div class="bar-row">
+    <div class="bar-label num">${x.b}</div>
+    <div class="bar-track"><span class="bar-fill" style="width:${(x.p / 26 * 100).toFixed(0)}%"></span></div>
+    <div class="bar-val">${x.p.toFixed(1)}%</div>
+  </div>`).join('');
+
+/* Top-8 proposals by implied probability of ranking #1 */
+const TOP = [
+  ['P-07','Verifiable compute marketplace for climate models','Compute',12.4,21800],
+  ['P-12','Open dataset: smallholder farm yields in four countries','Data',9.8,17400],
+  ['P-03','Zero-knowledge attestations for aid distribution','Privacy',8.6,15100],
+  ['P-21','Low-cost air-quality sensors, open firmware','Hardware',7.9,12800],
+  ['P-09','Reproducibility engine for machine-learning papers','Tooling',6.4,10200],
+  ['P-33','Peer-to-peer mesh network for rural clinics','Networks',5.8,8900],
+  ['P-05','Formal verification toolchain for voting systems','Security',5.1,7600],
+  ['P-27','Open speech data for 20 low-resource languages','Data',4.4,6100]
+];
+$('#rank').innerHTML = TOP.map((r, i) => `
+  <tr class="plain">
+    <td class="num muted">${i + 1}</td>
+    <td class="q">${r[0]} · ${r[1]}</td>
+    <td class="tiny muted">${r[2]}</td>
+    <td class="right num">${r[3].toFixed(1)}%</td>
+    <td class="right num">${fmtUsd(r[4])}</td>
+  </tr>`).join('') + `
+  <tr class="plain cut"><td class="num muted">9–50</td>
+    <td class="q muted">Long tail — 42 proposals</td><td class="tiny muted">mixed</td>
+    <td class="right num">39.6%</td><td class="right num">$23,400</td></tr>`;
+
+/* 50 tiles shaded by implied probability — deterministic sample values */
+(function(){
+  const r = mulberry32(42);
+  let html = '';
+  const probs = [];
+  TOP.forEach(t => probs.push(t[3]));
+  for (let i = 0; i < 42; i++) probs.push(0.2 + r() * 2.6);   // long tail: 0.2–2.8%
+  for (let i = 1; i <= 50; i++){
+    const p = probs[i - 1];
+    const a = Math.min(.95, .10 + p / 12);
+    html += `<div class="tile" style="background:rgba(122,91,255,${a.toFixed(2)})" title="P-${String(i).padStart(2,'0')} · ${p.toFixed(1)}%">
+      <span>${i}</span></div>`;
+  }
+  $('#tiles').innerHTML = html;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer Opportunity — who gets selected</title>
+<meta name="description" content="Design concept: selection markets — a leaderboard of competition entries with implied probabilities, sortable and searchable. Sample data.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html">Home</a>
+      <a href="app.html">App</a>
+      <a href="deep.html">Deep</a>
+      <a href="futarchy.html">Futarchy</a>
+      <a href="opportunity.html" class="active">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Interface 04 · Opportunity <span class="sep">/</span> selection markets</p>
+      <h1>Markets for competitions: who gets selected?</h1>
+      <p class="lead">Hackathons, grant rounds, open calls — hundreds of entries, a handful of
+        prizes, months of waiting. Here every submission is a tradable entry: the price is the
+        crowd&rsquo;s live estimate of selection, and the leaderboard sorts by it. Whoever turns
+        out to be right is paid; nobody has to trust a judge&rsquo;s whisper.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:20px">
+
+    <div class="g12" style="align-items:start">
+      <div class="col-8">
+        <div class="card pad-lg">
+          <p class="card-kicker"><span class="pill cyan"><span class="dot"></span>OPEN</span>
+            ETHGLOBAL CANNES 2027 · MAIN PRIZES</p>
+          <h2 style="font-size:21px;margin-bottom:8px">Which 10 of 62 finalists take a main prize?</h2>
+          <p class="small muted">Settlement to the official selection list published by the
+            organizers; ties settled by the published ordering. Closes 2027-05-19.</p>
+
+          <div class="toolbar mt">
+            <input type="search" id="q" placeholder="Search entries or teams…" aria-label="Search entries">
+            <div class="chips" id="sortchips" role="group" aria-label="Sort entries"></div>
+            <span class="result-count" id="count"></span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data" id="board">
+              <thead>
+                <tr><th>#</th><th>Entry</th><th>Implied probability</th><th class="right">24h</th><th class="right">Volume</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="tiny muted mt">After rank 10 the table crosses the <span class="up">prize
+            cutoff</span>. Entries below it still trade — the cutoff moves with the field.
+            Implied probability is the last traded price, not a prediction by the platform.</p>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card pad-lg mb">
+          <p class="card-kicker">Market stats</p>
+          <dl class="kv">
+            <dt>Entries</dt><dd>62 tradable</dd>
+            <dt>Prizes</dt><dd>10 main prizes</dd>
+            <dt>Volume</dt><dd>$284,700</dd>
+            <dt>Liquidity</dt><dd>$61,900</dd>
+            <dt>Closes</dt><dd>2027-05-19</dd>
+            <dt>Settlement</dt><dd>official list</dd>
+          </dl>
+        </div>
+        <div class="card pad-lg mb">
+          <p class="card-kicker">How a selection market works</p>
+          <ol class="small muted" style="padding-left:18px;margin:0">
+            <li>Finalists are listed as outcomes by anyone — the list mirrors the official
+              shortlist.</li>
+            <li>Each entry trades between 0 and 100% of a prize.</li>
+            <li>When organizers publish results, winning entries settle at 100%.</li>
+          </ol>
+        </div>
+        <div class="card pad-lg">
+          <p class="card-kicker">Second market</p>
+          <h3 style="font-size:15px;margin-bottom:10px">Gitcoin GG23 — which 5 projects top the
+            matching leaderboard?</h3>
+          <div id="gg"></div>
+          <p class="tiny muted mt">Field row covers the remaining 84 projects ·
+            volume $96,200 · closes 2027-02-28.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure, event and entry on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="index.html">Home</a> ·
+      <a href="app.html">App</a> · <a href="deep.html">Deep</a> ·
+      <a href="futarchy.html">Futarchy</a> · <a href="risk.html">Risk</a> ·
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+/* ---- sample entries: invented project names, teams and prices ---- */
+const ENTRIES = [
+  ['Nimbus Pay','@kade',14.2,+2.1,38400],
+  ['Sabi Protocol','@mara.eth',11.8,-0.6,31200],
+  ['Fieldnote','@fieldnote',10.4,+1.4,27900],
+  ['Loopcraft','@0xloop',9.1,+0.3,22600],
+  ['Harborlay','@harbor.eth',8.3,-1.2,19800],
+  ['Sigma Rooms','@sigmarooms',7.6,+0.9,17400],
+  ['Tessera','@tessera_labs',6.9,0.0,15100],
+  ['Coldpath','@coldpath',6.2,+0.4,12800],
+  ['Relayline','@relayline',5.7,-0.8,11200],
+  ['Mintwell','@mintwell',5.1,+0.2,9600],
+  ['Vantage Grid','@vantagegrid',4.6,-0.3,7900],
+  ['Oddstack','@oddstack',4.1,+0.6,6400]
+];
+const TAIL = { n:50, p:15.6, vol:11300 };
+
+const S = { q:'', sort:'p' };
+const SORTS = { p:'Probability', d:'24h change', v:'Volume' };
+
+(function(){
+  const box = $('#sortchips');
+  box.innerHTML = Object.keys(SORTS).map(k =>
+    `<button class="chip${k === S.sort ? ' on' : ''}" data-k="${k}">Sort: ${SORTS[k]}</button>`).join('');
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    S.sort = b.dataset.k;
+    box.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b));
+    render();
+  });
+})();
+$('#q').addEventListener('input', e => { S.q = e.target.value.trim().toLowerCase(); render(); });
+
+function render(){
+  let list = ENTRIES.filter(r => !S.q || (r[0] + ' ' + r[1]).toLowerCase().includes(S.q));
+  /* sort only on the field shown; probability sort keeps the cutoff meaningful */
+  list = list.slice().sort((a, b) =>
+    S.sort === 'p' ? b[2] - a[2] : S.sort === 'd' ? Math.abs(b[3]) - Math.abs(a[3]) : b[4] - a[4]);
+  $('#count').textContent = `${list.length + (S.q ? 0 : 1)} rows`;
+
+  /* cut line after the 10th entry when sorted by probability and unfiltered */
+  const cut = (S.sort === 'p' && !S.q) ? 10 : -1;
+  const maxP = 15;
+  /* innerHTML below interpolates only literals/numbers from this file. */
+  let html = list.map((r, i) => `
+    <tr class="${i === cut ? 'cut' : ''}plain">
+      <td class="num muted">${i + 1}</td>
+      <td><div class="q" style="min-width:150px">${r[0]}</div><div class="id">${r[1]}</div></td>
+      <td style="min-width:180px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="bar-track" style="flex:1"><span class="bar-fill" style="width:${(r[2] / maxP * 100).toFixed(1)}%"></span></div>
+          <span class="num">${r[2].toFixed(1)}%</span>
+        </div>
+      </td>
+      <td class="right num ${r[3] > 0 ? 'up' : r[3] < 0 ? 'down' : 'muted'}">${r[3] > 0 ? '▲' : r[3] < 0 ? '▼' : '·'} ${Math.abs(r[3]).toFixed(1)}</td>
+      <td class="right num">${fmtUsd(r[4])}</td>
+    </tr>`).join('');
+  if (!S.q) html += `
+    <tr class="plain"><td class="num muted">13–62</td>
+      <td><div class="q muted" style="min-width:150px">50 more entries</div><div class="id">combined</div></td>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="bar-track" style="flex:1"><span class="bar-fill" style="width:${(TAIL.p / maxP * 100).toFixed(1)}%"></span></div>
+        <span class="num">${TAIL.p.toFixed(1)}%</span></div></td>
+      <td class="right num muted">· 0.0</td><td class="right num">${fmtUsd(TAIL.vol)}</td></tr>`;
+  $('#board tbody').innerHTML = html;
+}
+
+/* second market: Gitcoin-style matching leaderboard */
+(function(){
+  const rows = [
+    ['OpenGrants Index',22.6],['Regen Commons',18.9],['Solarpunk Labs',15.4],
+    ['Data Trusts Collective',13.7],['Civic Stack',11.2],['Field — 84 projects',18.2]
+  ];
+  $('#gg').innerHTML = rows.map(r => `
+    <div class="bar-row">
+      <div class="bar-label" style="font-size:12.5px">${r[0]}</div>
+      <div class="bar-track"><span class="bar-fill" style="width:${(r[1] / 24 * 100).toFixed(0)}%"></span></div>
+      <div class="bar-val" style="font-size:12.5px">${r[1].toFixed(1)}%</div>
+    </div>`).join('');
+})();
+
+render();
+</script>
+</body>
+</html>

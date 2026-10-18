@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://italeex.github.io/seer-six-interfaces/sitemap.xml

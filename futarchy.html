@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer Futarchy — what the metric looks like if it passes</title>
+<meta name="description" content="Design concept: futarchy — conditional markets on a success metric under pass vs fail, with a proposal card and decision summary. Sample data.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html">Home</a>
+      <a href="app.html">App</a>
+      <a href="deep.html">Deep</a>
+      <a href="futarchy.html" class="active">Futarchy</a>
+      <a href="opportunity.html">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Interface 03 · Futarchy <span class="sep">/</span> conditional governance</p>
+      <h1>Conditional markets that decide what to do next.</h1>
+      <p class="lead">Each proposal is paired with a success metric and two conditional markets:
+        one prices the metric <em>if the proposal passes</em>, one prices it <em>if the proposal
+        fails</em>. Neither prices the vote itself — the gap between the two forecasts is the
+        decision signal, and anything inside the noise band goes back for revision instead of
+        being enacted.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:20px">
+
+    <div class="chips mb" id="propchips" role="group" aria-label="Proposals"></div>
+
+    <!-- ===== proposal card ===== -->
+    <div class="card pad-lg mb" id="proposal"></div>
+
+    <div class="g12" style="align-items:start">
+      <!-- ===== conditional markets ===== -->
+      <div class="col-7">
+        <div class="g12">
+          <div class="col-6">
+            <div class="card pad-lg" id="passCard"></div>
+          </div>
+          <div class="col-6">
+            <div class="card pad-lg" id="failCard"></div>
+          </div>
+          <div class="col-12">
+            <div class="card pad-lg">
+              <p class="card-kicker">Conditional price history · 60 days</p>
+              <h3 style="margin-bottom:4px">Both branches, one chart</h3>
+              <p class="small muted mb">Violet: &ldquo;metric target met if the proposal passes&rdquo;.
+                Cyan dashed: the same target if it fails. The vertical gap is what the voters see.</p>
+              <svg class="chart" id="condchart" role="img" aria-label="Conditional price chart, pass vs fail"></svg>
+              <div class="legend mt">
+                <span><i style="background:#7A5BFF"></i>if passes</span>
+                <span><i style="background:#38E8FF"></i>if fails</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== decision summary ===== -->
+      <div class="col-5">
+        <div class="card pad-lg sticky" id="decision"></div>
+      </div>
+    </div>
+
+    <!-- ===== past decisions ===== -->
+    <div class="card pad-lg mt-lg">
+      <p class="card-kicker">Decision log</p>
+      <h3>Recent proposals and what the markets said</h3>
+      <div class="table-wrap" style="border-radius:10px;margin-top:12px">
+        <table class="data" style="min-width:660px">
+          <thead><tr><th>Proposal</th><th>Metric</th><th class="right">If passes</th><th class="right">If fails</th><th class="right">Edge</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr class="plain"><td class="q">SEER-FUT-11 · Extend community grants by 6 months</td>
+              <td class="tiny muted">Quarterly active builders</td>
+              <td class="right num">49.2%</td><td class="right num">38.9%</td><td class="right num up">+10.3</td>
+              <td><span class="pill success"><span class="dot"></span>Enacted</span></td></tr>
+            <tr class="plain"><td class="q">SEER-FUT-12 · Buy advertising on prediction aggregators</td>
+              <td class="tiny muted">New monthly traders</td>
+              <td class="right num">41.6%</td><td class="right num">44.1%</td><td class="right num down">−2.5</td>
+              <td><span class="pill warning"><span class="dot"></span>Returned for revision</span></td></tr>
+            <tr class="plain"><td class="q">SEER-FUT-13 · Cut market-creation bond from 500 to 100 USDC</td>
+              <td class="tiny muted">Markets ≥ $10k volume</td>
+              <td class="right num">57.4%</td><td class="right num">45.8%</td><td class="right num up">+11.6</td>
+              <td><span class="pill success"><span class="dot"></span>Enacted</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tiny muted mt">Sample governance history for the design concept — these proposals,
+        metrics and outcomes are invented.</p>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure and market name on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="index.html">Home</a> ·
+      <a href="app.html">App</a> · <a href="deep.html">Deep</a> ·
+      <a href="opportunity.html">Opportunity</a> · <a href="risk.html">Risk</a> ·
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+/* ---- sample proposals. Figures invented for the design concept. ---- */
+const PROPOSALS = [
+  { id:'SEER-FUT-14',
+    title:'Fund a 12-month developer grants program',
+    desc:'Allocate 400,000 USDC from the DAO treasury to a developer grants program: four quarterly rounds, public scoring rubrics, all work delivered as open source.',
+    ask:'400,000 USDC',
+    metric:'Protocol fee revenue over the 90 days after the decision',
+    baseline:'$612K / 90d', target:'≥ +25% vs baseline',
+    pass:58.3, fail:34.1, passVol:94200, failVol:51700, passLiq:30400, failLiq:18800,
+    seedPass:214, seedFail:215, noise:8, closes:'2026-11-02', status:'Voting open', statusCls:'cyan' },
+  { id:'SEER-FUT-15',
+    title:'Raise the protocol fee from 0.20% to 0.35%',
+    desc:'Increase the fee on settled volume; proceeds fund the treasury. Reversible by a second vote after one quarter.',
+    ask:'no treasury spend',
+    metric:'Net protocol revenue over the 90 days after the decision',
+    baseline:'$1.04M / 90d', target:'≥ +15% vs baseline',
+    pass:55.9, fail:40.3, passVol:141600, failVol:88900, passLiq:51200, failLiq:33400,
+    seedPass:316, seedFail:317, noise:8, closes:'2026-08-14', status:'Decided · enacted', statusCls:'success' },
+  { id:'SEER-FUT-16',
+    title:'Buy back and burn 2,000,000 SEER over six months',
+    desc:'Treasury buys tokens on the open market in weekly tranches and burns them, funded by fee revenue only, no debt.',
+    ask:'up to 420,000 USDC of fee revenue',
+    metric:'Token price 180 days after the decision',
+    baseline:'$0.184', target:'≥ +20% vs baseline',
+    pass:44.2, fail:47.9, passVol:61300, failVol:39400, passLiq:22100, failLiq:14900,
+    seedPass:418, seedFail:419, noise:8, closes:'2026-10-30', status:'In review', statusCls:'warning' }
+];
+
+let cur = 0;
+
+function verdict(p){
+  const edge = p.pass - p.fail;
+  if (edge > p.noise)  return { k:'enact',  cls:'success', label:'PASS — enact',
+    why:`The pass forecast beats the fail forecast by ${edge.toFixed(1)} points, outside the ±${p.noise}-point noise band.` };
+  if (edge < -p.noise) return { k:'reject', cls:'danger',  label:'FAIL — reject',
+    why:`The fail forecast beats the pass forecast by ${Math.abs(edge).toFixed(1)} points, outside the ±${p.noise}-point noise band.` };
+  return { k:'revise', cls:'warning', label:'INCONCLUSIVE — return for revision',
+    why:`The ${edge >= 0 ? '+' : ''}${edge.toFixed(1)}-point edge sits inside the ±${p.noise}-point noise band; the market cannot separate the two branches.` };
+}
+
+function chipify(){
+  const box = $('#propchips');
+  box.innerHTML = PROPOSALS.map((p, i) =>
+    `<button class="chip${i === cur ? ' on' : ''}" data-i="${i}">${p.id}</button>`).join('');
+  box.querySelectorAll('.chip').forEach(b => b.onclick = () => { cur = +b.dataset.i; render(); chipify(); });
+}
+
+function render(){
+  const p = PROPOSALS[cur];
+  const v = verdict(p), edge = p.pass - p.fail;
+
+  $('#proposal').innerHTML = `
+    <p class="card-kicker">Proposal <span class="pill ${p.statusCls}"><span class="dot"></span>${p.status}</span></p>
+    <h2 style="font-size:21px;margin-bottom:8px">${p.id} — ${p.title}</h2>
+    <p class="small muted" style="max-width:80ch">${p.desc}</p>
+    <div class="g12 mt">
+      <div class="col-3"><div class="tiny muted">Treasury ask</div><div class="num">${p.ask}</div></div>
+      <div class="col-3"><div class="tiny muted">Success metric</div><div class="num small">${p.metric}</div></div>
+      <div class="col-3"><div class="tiny muted">Target</div><div class="num">${p.target}</div></div>
+      <div class="col-3"><div class="tiny muted">Vote closes</div><div class="num">${p.closes}</div></div>
+    </div>`;
+
+  $('#passCard').innerHTML = `
+    <p class="card-kicker"><span class="pill violet"><span class="dot"></span>if it passes</span></p>
+    <div class="big-num">${p.pass.toFixed(1)}<small>%</small></div>
+    <p class="small muted mt">Probability that <strong style="color:var(--text)">${p.target}</strong>
+      is met <em>in the branch where this proposal passes</em>.</p>
+    <dl class="kv mt">
+      <dt>Conditional price</dt><dd>${p.pass.toFixed(1)}%</dd>
+      <dt>24h volume</dt><dd>${fmtUsd(p.passVol)}</dd>
+      <dt>Liquidity</dt><dd>${fmtUsd(p.passLiq)}</dd>
+    </dl>`;
+  $('#passCard').querySelector('.card-kicker').innerHTML =
+    `<span class="pill violet"><span class="dot"></span>${p.id} · if it passes</span>`;
+
+  $('#failCard').innerHTML = `
+    <p class="card-kicker"><span class="pill"><span class="dot"></span>${p.id} · if it fails</span></p>
+    <div class="big-num">${p.fail.toFixed(1)}<small>%</small></div>
+    <p class="small muted mt">Same metric, same target, priced under the opposite branch — what
+      the world looks like if the proposal is rejected.</p>
+    <dl class="kv mt">
+      <dt>Conditional price</dt><dd>${p.fail.toFixed(1)}%</dd>
+      <dt>24h volume</dt><dd>${fmtUsd(p.failVol)}</dd>
+      <dt>Liquidity</dt><dd>${fmtUsd(p.failLiq)}</dd>
+    </dl>`;
+
+  $('#decision').innerHTML = `
+    <p class="card-kicker">Decision summary</p>
+    <h3 style="margin-bottom:12px">${p.id}</h3>
+    <span class="pill ${v.cls}" style="font-size:12.5px;padding:6px 12px">
+      <span class="dot"></span>${v.label}</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 4px">
+      <div><div class="tiny muted">If passes</div><div class="num" style="font-size:20px">${p.pass.toFixed(1)}%</div></div>
+      <div><div class="tiny muted">If fails</div><div class="num" style="font-size:20px">${p.fail.toFixed(1)}%</div></div>
+      <div><div class="tiny muted">Edge</div>
+        <div class="num ${edge >= 0 ? 'up' : 'down'}" style="font-size:20px">${edge >= 0 ? '+' : ''}${edge.toFixed(1)} pts</div></div>
+      <div><div class="tiny muted">Noise band</div><div class="num" style="font-size:20px">±${p.noise} pts</div></div>
+    </div>
+    <p class="small muted">${v.why}</p>
+    <p class="tiny muted">Rule shown in this concept: act only when the edge exceeds the band.
+      Conditional prices are direct quotes for the target in each branch; they do not need to sum
+      to 100%. Final decision at vote close on <span class="num">${p.closes}</span>.</p>`;
+
+  /* two-series conditional chart */
+  const svg = $('#condchart');
+  const a = walk(p.seedPass, 60, p.pass - 6, 2.4, .10);
+  const b = walk(p.seedFail, 60, p.fail + 3, 2.4, -.04);
+  a[a.length - 1] = p.pass; b[b.length - 1] = p.fail;
+
+  const W = 640, H = 220, P = { l: 38, r: 14, t: 14, b: 24 };
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.innerHTML = '';
+  const min = Math.min(...a, ...b), max = Math.max(...a, ...b);
+  const lo = Math.max(0, min - 6), hi = Math.min(100, max + 6);
+  const x = i => P.l + (i / (a.length - 1)) * (W - P.l - P.r);
+  const y = v2 => P.t + (1 - (v2 - lo) / (hi - lo)) * (H - P.t - P.b);
+  for (let g = 0; g <= 3; g++){
+    const vv = lo + (g / 3) * (hi - lo);
+    svgEl('line', { class:'grid-line', x1:P.l, x2:W - P.r, y1:y(vv), y2:y(vv) }, svg);
+    const t = svgEl('text', { class:'axis-text', x:4, y:y(vv) + 3 }, svg); t.textContent = vv.toFixed(0) + '%';
+  }
+  const pts = arr => arr.map((v2, i) => `${x(i).toFixed(1)},${y(v2).toFixed(1)}`).join(' ');
+  svgEl('polyline', { class:'line', points: pts(a) }, svg);
+  svgEl('polyline', { class:'line cyan', points: pts(b), 'stroke-dasharray':'5 4' }, svg);
+  svgEl('circle', { class:'dot', cx:x(59), cy:y(a[59]), r:3.4 }, svg);
+  svgEl('circle', { class:'dot cyan', cx:x(59), cy:y(b[59]), r:3.4 }, svg);
+  const l0 = svgEl('text', { class:'axis-text', x:P.l, y:H - 6 }, svg); l0.textContent = '60d ago';
+  const l1 = svgEl('text', { class:'axis-text', x:W - P.r, y:H - 6, 'text-anchor':'end' }, svg); l1.textContent = 'now';
+}
+
+chipify(); render();
+</script>
+</body>
+</html>

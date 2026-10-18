@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About this concept — Seer, six interfaces</title>
+<meta name="description" content="Rationale, disclaimer and brand-kit notes for the Seer six-interfaces design concept (poidh #38). Sample data, not a live product.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html">Home</a>
+      <a href="app.html">App</a>
+      <a href="deep.html">Deep</a>
+      <a href="futarchy.html">Futarchy</a>
+      <a href="opportunity.html">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Index · About this concept</p>
+      <h1>About this design concept.</h1>
+      <p class="lead">Seven pages, one identity: a working prototype of how Seer&rsquo;s six
+        interfaces could look, read and behave as a single product.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:20px">
+    <div class="g12" style="align-items:start">
+
+      <div class="col-7">
+        <div class="card pad-lg mb">
+          <p class="card-kicker">Rationale</p>
+          <h2 style="font-size:20px">Why it looks like this</h2>
+          <p class="small muted">Seer is a protocol, not an app — so the design puts the shared
+            core first and treats the six interfaces as windows onto the same book of markets:
+            one header, one table grammar, one palette, and numbers always in monospace so prices
+            stay comparable at a glance. A dark surface with two accents (violet for structure,
+            cyan for data) lets probability, volume and risk carry the colour, and the restrained
+            glow keeps attention on the few elements that ask for action. Everything is plain
+            HTML, one CSS file and vanilla JS — no build step — because a concept should be
+            readable, forkable and able to run from a branch with a click.</p>
+        </div>
+        <div class="card pad-lg mb">
+          <p class="card-kicker">Not a product</p>
+          <h2 style="font-size:20px">Disclaimer</h2>
+          <p class="small muted">This is an independent design concept for the Seer design
+            bounty on poidh.xyz (bounty #38). It is not affiliated with, produced by, or endorsed
+            by Seer. No wallet is connected, no API is called, and nothing here can place a trade.
+            All market titles, outcome sets, prices, volumes, liquidity figures, proposals,
+            entries and agents are invented sample data chosen to look plausible — they are not
+            real market data, not advice, and not a statement about any real protocol, team or
+            program. Third-party names that appear in the risk comparison are used only as
+            familiar labels for a hypothetical interface.</p>
+        </div>
+        <div class="card pad-lg">
+          <p class="card-kicker">Brand kit</p>
+          <h2 style="font-size:20px">Departures from the Electric Foundation kit</h2>
+          <p class="small muted">We could not open the Figma brand kit — it was not accessible to
+            this build — so nothing here is claimed to implement it. The identity below is an
+            original interpretation of the brief, and these are the deliberate departures:</p>
+          <ul class="small muted">
+            <li><strong style="color:var(--text)">Palette.</strong> A dark instrument-panel
+              scheme — #08090C background, violet #7A5BFF and cyan #38E8FF accents — chosen for
+              data density and long reading sessions, not taken from any kit token we could see.</li>
+            <li><strong style="color:var(--text)">Typography.</strong> System font stack with a
+              monospace face for every number. No custom or commercial webfont is loaded, since
+              the build deliberately ships with zero external requests.</li>
+            <li><strong style="color:var(--text)">Logo.</strong> A plain geometric mark and a
+              letterspaced wordmark set in type; no asset from the kit is reproduced.</li>
+            <li><strong style="color:var(--text)">Components.</strong> A house grammar of 12px
+              cards, pill statuses, tabbed panels and table-first layouts, built from scratch
+              rather than matched to kit components.</li>
+            <li><strong style="color:var(--text)">Imagery.</strong> No illustrations, photography
+              or icon library; the only graphics are inline SVG charts drawn at runtime from the
+              sample data.</li>
+            <li><strong style="color:var(--text)">Unknown unknowns.</strong> Spacing scale,
+              motion rules, voice and illustration style from the kit are unreviewed here; if the
+              judging panel wants kit alignment, this concept is structured to be re-skinned
+              without touching page structure.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="card pad-lg mb">
+          <p class="card-kicker">The six interfaces</p>
+          <ol class="small" style="padding-left:18px;margin:0">
+            <li class="mb"><a href="index.html">Home</a> — the protocol beneath the applications,
+              and the whole ecosystem on one page.</li>
+            <li class="mb"><a href="app.html">App</a> — the explorer: filterable market table,
+              detail panel, inline-SVG price chart and order book.</li>
+            <li class="mb"><a href="deep.html">Deep</a> — many-outcome markets, including an agent
+              market over 50 grant proposals.</li>
+            <li class="mb"><a href="futarchy.html">Futarchy</a> — pass-vs-fail conditional
+              markets on a success metric, with a decision summary.</li>
+            <li class="mb"><a href="opportunity.html">Opportunity</a> — selection markets and a
+              leaderboard of entries with implied probabilities.</li>
+            <li><a href="risk.html">Risk</a> — protocol risk estimates, comparison table, ranges
+              and a chart.</li>
+          </ol>
+        </div>
+        <div class="card pad-lg mb">
+          <p class="card-kicker">Build</p>
+          <dl class="kv">
+            <dt>Stack</dt><dd>HTML + one CSS + vanilla JS</dd>
+            <dt>Dependencies</dt><dd>none</dd>
+            <dt>External requests</dt><dd>0</dd>
+            <dt>Trackers</dt><dd>none</dd>
+            <dt>Hosting</dt><dd>GitHub Pages</dd>
+            <dt>Fonts</dt><dd>system / monospace</dd>
+          </dl>
+        </div>
+        <div class="card pad-lg">
+          <p class="card-kicker">Source</p>
+          <p class="small muted">The whole concept is a static site in a public repository —
+            open it, fork it, or diff it against the brief:
+            <a href="https://github.com/italeex/seer-six-interfaces">github.com/italeex/seer-six-interfaces</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure and market name on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="index.html">Home</a> ·
+      <a href="app.html">App</a> · <a href="deep.html">Deep</a> ·
+      <a href="futarchy.html">Futarchy</a> · <a href="opportunity.html">Opportunity</a> ·
+      <a href="risk.html">Risk</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

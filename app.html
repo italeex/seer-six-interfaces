@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer App — every market in one table</title>
+<meta name="description" content="Design concept: the Seer explorer. Filterable market table, detail panel with inline-SVG price chart and order book. Sample data.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html">Home</a>
+      <a href="app.html" class="active">App</a>
+      <a href="deep.html">Deep</a>
+      <a href="futarchy.html">Futarchy</a>
+      <a href="opportunity.html">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="kicker">Interface 01 · App <span class="sep">/</span> all markets</p>
+      <h1>Every market on Seer, in one table.</h1>
+      <p class="lead">The general explorer: filter by category, search by question, sort by
+        volume. Click a market to open its detail panel — price chart and order book are drawn
+        live from the selected row.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-top:20px">
+
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Search markets — try “ETH”, “grant”, “rates”…" aria-label="Search markets">
+      <div class="chips" id="cats" role="group" aria-label="Category filter"></div>
+      <select id="sort" aria-label="Sort markets">
+        <option value="vol">Sort: 24h volume</option>
+        <option value="liq">Sort: liquidity</option>
+        <option value="price">Sort: leading price</option>
+        <option value="close">Sort: closing soonest</option>
+      </select>
+    </div>
+    <p class="result-count" id="count"></p>
+
+    <div class="split" style="align-items:start">
+      <!-- market list -->
+      <div class="table-wrap">
+        <table class="data" id="tbl">
+          <thead>
+            <tr>
+              <th>Market</th><th>Outcomes</th><th>Leading</th><th class="right">24h volume</th>
+              <th class="right">Liquidity</th><th>Closes</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- detail panel -->
+      <div class="sticky">
+        <div class="card pad-lg" id="detail"></div>
+      </div>
+    </div>
+
+    <p class="tiny muted mt">Order books and charts are generated from invented sample data in
+      this page&rsquo;s source. No wallet, no API, no live venue is connected.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure and market name on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="index.html">Home</a> ·
+      <a href="deep.html">Deep</a> · <a href="futarchy.html">Futarchy</a> ·
+      <a href="opportunity.html">Opportunity</a> · <a href="risk.html">Risk</a> ·
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+/* ---- sample market inventory (invented figures) ---- */
+const MARKETS = [
+  { id:'SEER-APP-1042', cat:'Crypto',  q:'Will ETH close above $5,000 on 31 Dec 2026?',          n:2, lead:'YES', price:62.4, vol:1842300, liq:412900, close:'2026-12-31', seed:11,  drift:.12 },
+  { id:'SEER-APP-1043', cat:'Macro',   q:'Will the Fed cut rates at the December 2026 FOMC meeting?', n:2, lead:'YES', price:71.2, vol:986540,  liq:203110, close:'2026-12-16', seed:22,  drift:.05 },
+  { id:'SEER-APP-1044', cat:'Crypto',  q:'Will BTC dominance stay above 55% through Q1 2027?',    n:2, lead:'NO',  price:44.8, vol:521070,  liq:158400, close:'2027-03-31', seed:33,  drift:-.10 },
+  { id:'SEER-APP-1046', cat:'Crypto',  q:'Which L2 leads weekly DEX volume on 31 Mar 2027?',      n:6, lead:'Base', price:38.1, vol:764310, liq:221800, close:'2027-03-31', seed:55,  drift:.08 },
+  { id:'SEER-APP-1045', cat:'Macro',   q:'US federal government shutdown before 1 Mar 2027?',     n:2, lead:'NO',  price:21.1, vol:312660,  liq:96220,  close:'2027-03-01', seed:44,  drift:-.03 },
+  { id:'SEER-APP-1047', cat:'Space',   q:'Will Starship V4 reach orbit before 1 Jul 2027?',       n:2, lead:'YES', price:55.7, vol:203940,  liq:67800,  close:'2027-07-01', seed:66,  drift:.15 },
+  { id:'SEER-APP-1048', cat:'Crypto',  q:'Will a spot SOL ETF begin trading in the US before Jul 2027?', n:2, lead:'YES', price:41.3, vol:398210, liq:129400, close:'2027-07-01', seed:77, drift:.02 },
+  { id:'SEER-APP-1049', cat:'AI',      q:'Will a frontier model score ≥ 90% on GPQA Diamond before 30 Jun 2027?', n:2, lead:'YES', price:36.9, vol:288420, liq:84200, close:'2027-06-30', seed:88, drift:.20 },
+  { id:'SEER-APP-1050', cat:'Climate', q:'Will 2027 set a new global mean temperature record?',   n:2, lead:'YES', price:68.5, vol:121360,  liq:41900,  close:'2028-01-15', seed:99,  drift:.06 },
+  { id:'SEER-APP-1051', cat:'Policy',  q:'Will the EU adopt an AI Liability Directive before 2028?', n:2, lead:'YES', price:52.0, vol:167780, liq:52300, close:'2027-12-31', seed:101, drift:-.05 },
+  { id:'SEER-APP-1052', cat:'Crypto',  q:'Total prediction-market volume across all venues above $10B in 2027?', n:2, lead:'YES', price:29.4, vol:93450, liq:38700, close:'2028-01-31', seed:111, drift:.10 },
+  { id:'SEER-APP-1053', cat:'Tech',    q:'Will Apple ship a foldable device in 2027?',            n:2, lead:'NO',  price:17.4, vol:142910,  liq:46900,  close:'2027-12-31', seed:121, drift:-.08 }
+];
+
+const S = { q:'', cat:'All', sort:'vol', sel:MARKETS[0], tab:'chart' };
+
+/* category chips */
+const cats = ['All', ...new Set(MARKETS.map(m => m.cat))];
+const catsBox = $('#cats');
+catsBox.innerHTML = cats.map(c => `<button class="chip${c === S.cat ? ' on' : ''}" data-cat="${c}">${c}</button>`).join('');
+catsBox.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  S.cat = b.dataset.cat;
+  $$('.chip', catsBox).forEach(x => x.classList.toggle('on', x === b));
+  renderList();
+});
+$('#q').addEventListener('input', e => { S.q = e.target.value.trim().toLowerCase(); renderList(); });
+$('#sort').addEventListener('change', e => { S.sort = e.target.value; renderList(); });
+
+function rows(){
+  let r = MARKETS.filter(m =>
+    (S.cat === 'All' || m.cat === S.cat) &&
+    (!S.q || (m.q + ' ' + m.id + ' ' + m.cat + ' ' + m.lead).toLowerCase().includes(S.q)));
+  const cmp = {
+    vol:   (a, b) => b.vol - a.vol,
+    liq:   (a, b) => b.liq - a.liq,
+    price: (a, b) => b.price - a.price,
+    close: (a, b) => a.close.localeCompare(b.close)
+  }[S.sort];
+  return r.sort(cmp);
+}
+
+function renderList(){
+  const list = rows();
+  $('#count').textContent = `${list.length} of ${MARKETS.length} sample markets · last trade simulated 4s ago`;
+  const tb = $('#tbl tbody');
+  tb.innerHTML = list.map(m => `
+    <tr data-id="${m.id}" class="${S.sel && S.sel.id === m.id ? 'sel' : ''}">
+      <td><div class="q">${m.q}</div><div class="id">${m.id} · ${m.cat}</div></td>
+      <td class="num muted">${m.n === 2 ? 'yes / no' : m.n + ' outcomes'}</td>
+      <td><span class="pill ${m.lead === 'YES' ? 'success' : m.lead === 'NO' ? 'danger' : 'violet'}"><span class="dot"></span>${m.lead}</span></td>
+      <td class="right num">${fmtUsd(m.vol)}</td>
+      <td class="right num">${fmtUsd(m.liq)}</td>
+      <td class="num tiny muted">${m.close}</td>
+    </tr>`).join('');
+  if (!list.some(m => m.id === S.sel.id) && list.length) S.sel = list[0];
+  renderDetail();
+}
+
+$('#tbl').addEventListener('click', e => {
+  const tr = e.target.closest('tr[data-id]'); if (!tr) return;
+  S.sel = MARKETS.find(m => m.id === tr.dataset.id);
+  $$('#tbl tbody tr').forEach(x => x.classList.toggle('sel', x === tr));
+  renderDetail();
+});
+
+function renderDetail(){
+  const m = S.sel;
+  const data = walk(m.seed, 30, m.price, 3.6, m.drift);
+  const d0 = data[0], delta = m.price - d0;
+  $('#detail').innerHTML = `
+    <p class="card-kicker">${m.id} · ${m.cat} · closes ${m.close}</p>
+    <h3 style="margin-bottom:10px">${m.q}</h3>
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+      <span class="big-num">${m.price.toFixed(1)}<small>% ${m.lead}</small></span>
+      <span class="${delta >= 0 ? 'up' : 'down'} num small">${delta >= 0 ? '▲' : '▼'} ${Math.abs(delta).toFixed(1)} pts · 30d</span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tab-chart" role="tab" aria-selected="${S.tab === 'chart'}">Price chart</button>
+      <button class="tab" id="tab-book"  role="tab" aria-selected="${S.tab === 'book'}">Order book</button>
+    </div>
+    <div id="pane-chart" style="display:${S.tab === 'chart' ? 'block' : 'none'}">
+      <svg class="chart" id="chart" role="img" aria-label="30-day price chart"></svg>
+    </div>
+    <div id="pane-book" style="display:${S.tab === 'book' ? 'block' : 'none'}">
+      <div class="ob" id="book"></div>
+    </div>
+    <dl class="kv mt">
+      <dt>24h volume</dt><dd>${fmtUsd(m.vol)}</dd>
+      <dt>Liquidity</dt><dd>${fmtUsd(m.liq)}</dd>
+      <dt>Open interest</dt><dd>${fmtUsd(m.liq * 0.62)}</dd>
+      <dt>Outcomes</dt><dd>${m.n === 2 ? 'yes / no' : m.n + ' · listed'}</dd>
+      <dt>Last trade</dt><dd>simulated 4s ago</dd>
+    </dl>`;
+  priceChart($('#chart'), data, { gradId:'gApp', x0:'30d ago', x1:'now' });
+  orderBook($('#book'), m.price, m.seed + 1);
+  $('#tab-chart').onclick = () => { S.tab = 'chart'; renderDetail(); };
+  $('#tab-book').onclick  = () => { S.tab = 'book';  renderDetail(); };
+}
+
+renderList();
+</script>
+</body>
+</html>

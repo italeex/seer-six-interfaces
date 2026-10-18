@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer — the prediction layer beneath every application</title>
+<meta name="description" content="Design concept: Seer as a shared prediction-market protocol, with six connected interfaces — explorer, deep markets, futarchy, opportunity and risk. Sample data.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Seer design concept — home">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M10 1.5 18.5 10 10 18.5 1.5 10Z" stroke="#7A5BFF" stroke-width="1.4"/>
+        <circle cx="10" cy="10" r="2.6" fill="#38E8FF"/>
+      </svg>
+      <span>SEER</span>
+      <span class="brand-tag">design concept</span>
+    </a>
+    <nav class="site-nav" aria-label="Interfaces">
+      <a href="index.html" class="active">Home</a>
+      <a href="app.html">App</a>
+      <a href="deep.html">Deep</a>
+      <a href="futarchy.html">Futarchy</a>
+      <a href="opportunity.html">Opportunity</a>
+      <a href="risk.html">Risk</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Seer · protocol overview <span class="sep">/</span> sample data</p>
+      <h1>The prediction layer beneath every application.</h1>
+      <p class="lead">Seer is a shared market protocol: anyone can open a question, anyone can
+        trade it, and outcomes settle once through the same oracle. Applications sit on top —
+        an explorer, deep multi-outcome markets, futarchy, selection markets and risk panels —
+        and all of them draw on the same liquidity, the same positions, the same settlement.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="app.html">Explore markets</a>
+        <a class="btn" href="#ecosystem">See the six interfaces</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="wrap" aria-label="Protocol snapshot">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val"><span class="num" data-count="84.2" data-dec="1" data-pre="$" data-suf="M">$0.0M</span></div>
+        <div class="stat-label">Cumulative volume <span class="tiny muted">(sample)</span></div>
+        <div class="stat-delta up num">▲ 6.4% · 30d</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span class="num" data-count="12.6" data-dec="1" data-pre="$" data-suf="M">$0.0M</span></div>
+        <div class="stat-label">Open interest <span class="tiny muted">(sample)</span></div>
+        <div class="stat-delta up num">▲ 2.1% · 30d</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span class="num" data-count="3412" data-pre="" data-suf="">0</span></div>
+        <div class="stat-label">Live markets <span class="tiny muted">(sample)</span></div>
+        <div class="stat-delta up num">▲ 118 this week</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val"><span class="num" data-count="8940" data-pre="" data-suf="">0</span></div>
+        <div class="stat-label">Unique traders <span class="tiny muted">(sample)</span></div>
+        <div class="stat-delta down num">▼ 1.3% · 30d</div>
+      </div>
+    </div>
+    <p class="tiny muted mt">All figures on this site are invented sample values for a design
+      concept — not real market data.</p>
+  </section>
+
+  <!-- ============ ECOSYSTEM ============ -->
+  <section class="section" id="ecosystem">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>One protocol, six interfaces</h2>
+        <p class="sub">Every interface reads and writes the same core. A position opened in the
+          explorer shows up in risk panels; a futarchy market settles through the same oracle as
+          a sports market. This concept presents the whole ecosystem as one product.</p>
+      </div>
+
+      <div class="g12">
+        <!-- 01 App -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="app.html">
+            <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h8" stroke="#7A5BFF" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <p class="card-kicker">01 · App</p>
+            <h3 class="card-title">The explorer</h3>
+            <p>Every market on the protocol in one filterable table — prices, volume, liquidity,
+              order books and charts. Seer&rsquo;s Etherscan.</p>
+            <span class="card-cta">Open the explorer →</span>
+          </a>
+        </div>
+        <!-- 02 Deep -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="deep.html">
+            <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="4" cy="4" r="1.6" stroke="#7A5BFF" stroke-width="1.4"/><circle cx="12" cy="4" r="1.6" stroke="#7A5BFF" stroke-width="1.4"/><circle cx="8" cy="12" r="1.6" stroke="#7A5BFF" stroke-width="1.4"/><path d="M4 4h8M4 4l3.2 6.4M12 4 8.8 10.4" stroke="#7A5BFF" stroke-width="1.2"/></svg></span>
+            <p class="card-kicker">02 · Deep</p>
+            <h3 class="card-title">Hundreds of outcomes</h3>
+            <p>Markets that don&rsquo;t fit in yes/no — score distributions over a whole field of
+              grant proposals, built for AI agents to trade.</p>
+            <span class="card-cta">Open deep markets →</span>
+          </a>
+        </div>
+        <!-- 03 Futarchy -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="futarchy.html">
+            <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v6M8 8 3.5 12M8 8l4.5 4" stroke="#7A5BFF" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="2.6" r="1.4" stroke="#7A5BFF" stroke-width="1.3"/></svg></span>
+            <p class="card-kicker">03 · Futarchy</p>
+            <h3 class="card-title">Conditional governance</h3>
+            <p>Two markets per proposal: what the success metric looks like if it passes, and if
+              it fails. The gap is the decision.</p>
+            <span class="card-cta">Open futarchy →</span>
+          </a>
+        </div>
+        <!-- 04 Opportunity -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="opportunity.html">
+            <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13V7M8 13V4M13 13V9" stroke="#7A5BFF" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <p class="card-kicker">04 · Opportunity</p>
+            <h3 class="card-title">Selection markets</h3>
+            <p>Which submissions will actually be chosen? Every entry is tradable; the
+              leaderboard is the crowd&rsquo;s live estimate.</p>
+            <span class="card-cta">Open opportunity →</span>
+          </a>
+        </div>
+        <!-- 05 Risk -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="risk.html">
+            <span class="icon-chip"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8 14 4.4v4.1c0 3.2-2.3 5-6 5.8-3.7-.8-6-2.6-6-5.8V4.4L8 1.8Z" stroke="#7A5BFF" stroke-width="1.4"/><path d="M5.6 8.2 7.3 10l3.3-3.6" stroke="#38E8FF" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <p class="card-kicker">05 · Risk</p>
+            <h3 class="card-title">Priced risk</h3>
+            <p>What would it cost to insure a protocol? Adverse-event markets turn risk into a
+              number you can compare and trade.</p>
+            <span class="card-cta">Open risk panel →</span>
+          </a>
+        </div>
+        <!-- 06 About -->
+        <div class="col-4">
+          <a class="card card-link card-hover" href="about.html">
+            <span class="icon-chip cyan"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke="#38E8FF" stroke-width="1.4"/><path d="M8 7.2v4" stroke="#38E8FF" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="4.9" r=".9" fill="#38E8FF"/></svg></span>
+            <p class="card-kicker">00 · Index</p>
+            <h3 class="card-title">About this concept</h3>
+            <p>The rationale, the disclaimer, and what this identity deliberately departs from.
+              Start here if you are reviewing the work.</p>
+            <span class="card-cta">Read the rationale →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How a market lives</h2>
+        <p class="sub">Three steps, identical for a yes/no question and for a 214-outcome
+          grant-review market.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="step-n">STEP 01</p>
+          <h3>Ask</h3>
+          <p>Anyone deploys a market with a resolution source, an outcome set and a close date.
+            Deep markets can carry hundreds of machine-readable outcomes.</p>
+        </div>
+        <div class="step">
+          <p class="step-n">STEP 02</p>
+          <h3>Trade</h3>
+          <p>Humans use any interface above; agents use the API. Small markets fill against an
+            AMM, large ones against a shared order book — one liquidity layer for all six
+            interfaces.</p>
+        </div>
+        <div class="step">
+          <p class="step-n">STEP 03</p>
+          <h3>Settle</h3>
+          <p>The oracle posts the outcome, disputed questions go to a bonded resolution round,
+            and every position across every interface settles at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="g12">
+        <div class="col-7">
+          <div class="card pad-lg">
+            <p class="card-kicker">Stack</p>
+            <h2 style="font-size:20px">Applications, core, settlement</h2>
+            <div class="table-wrap" style="border-radius:10px">
+              <table class="data" style="min-width:520px">
+                <thead><tr><th>Layer</th><th>What it does</th><th>Who touches it</th></tr></thead>
+                <tbody>
+                  <tr class="plain"><td class="q">Interface layer</td>
+                    <td class="muted">Explorer, deep markets, futarchy, opportunity, risk</td>
+                    <td class="num tiny">humans &amp; agents</td></tr>
+                  <tr class="plain"><td class="q">Seer core</td>
+                    <td class="muted">Market factory, AMM + order book, position tokens</td>
+                    <td class="num tiny">apps &amp; API</td></tr>
+                  <tr class="plain"><td class="q">Settlement</td>
+                    <td class="muted">Oracle feeds, bonded disputes, payout redemption</td>
+                    <td class="num tiny">resolvers</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="tiny muted mt">Architecture shown as a design concept. Names of third-party
+              networks are omitted on purpose — the concept only claims what the brief asks for.</p>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="card pad-lg">
+            <p class="card-kicker">Try it</p>
+            <h3>Where to go next</h3>
+            <ul class="small muted" style="padding-left:18px">
+              <li><a href="app.html">App</a> — filter 12 sample markets, open one, read its order book.</li>
+              <li><a href="deep.html">Deep</a> — an agent market over 50 grant proposals.</li>
+              <li><a href="futarchy.html">Futarchy</a> — switch proposals and watch the decision flip.</li>
+              <li><a href="opportunity.html">Opportunity</a> — sort a leaderboard by implied probability.</li>
+              <li><a href="risk.html">Risk</a> — compare protocols on one range chart.</li>
+            </ul>
+            <a class="btn sm" href="about.html">Design rationale</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-line"><strong>Design concept with sample data — not a live product.</strong>
+      Independent work for the Seer design bounty (poidh #38); not affiliated with or endorsed by
+      Seer. Every price, volume, liquidity figure and market name on this site is invented for
+      illustration and is not real market data.</p>
+    <p class="foot-line">Six interfaces, one protocol: <a href="app.html">App</a> ·
+      <a href="deep.html">Deep</a> · <a href="futarchy.html">Futarchy</a> ·
+      <a href="opportunity.html">Opportunity</a> · <a href="risk.html">Risk</a> ·
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+  $$('.stat-val .num').forEach(countUp);
+</script>
+</body>
+</html>
